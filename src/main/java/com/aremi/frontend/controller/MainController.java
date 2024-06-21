@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/api")
 public final class MainController {
-    private final Logger logger = Logger.getLogger("RestControllerLogger");
+    private final Logger logger = Logger.getLogger("RestController_Logger");
     private final RestService restService;
 
     @Autowired
