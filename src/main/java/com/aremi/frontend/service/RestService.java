@@ -29,6 +29,22 @@ public class RestService {
         } catch (Exception e) {
             logger.info("RestService::getDipendenteBeanById Error...\n" + e.getMessage());
         }
+
+        return null;
+    }
+
+    public GenericResponse<DipendenteBean> getDipendentibeanByIdSede(Long idSede) {
+        logger.info("RestService::getDipendentiBeanByIdSede service started... sending REST to request-translator microservice");
+        try {
+            return webClient.get()
+                    .uri("/api/dipendentiBySede/{id_sede}", idSede)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<GenericResponse<DipendenteBean>>() {})
+                    .block();
+        } catch (Exception e) {
+            logger.info("RestService::getDipendentiBeanByIdSede Error...\n" + e.getMessage());
+        }
+
         return null;
     }
 }
