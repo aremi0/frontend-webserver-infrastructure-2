@@ -24,7 +24,7 @@ public final class MainController {
 
     @GetMapping("/dipendente/{id}")
     GenericResponse<DipendenteBean> getDipendenteById(@PathVariable("id") Long id) {
-        logger.info("RestController::getDipendenteById started...");
+        logger.info("RestController::getDipendenteById REST received from client with ID: " + id);
         return restService.getDipendenteBeanById(id);
     }
 }

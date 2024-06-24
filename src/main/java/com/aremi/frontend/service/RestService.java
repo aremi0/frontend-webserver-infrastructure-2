@@ -15,13 +15,11 @@ public class RestService {
 
     public RestService() {
         logger = Logger.getLogger("RestService_Logger");
-        // TODO: aggiornare l'uri in base al layer infrastrutturale di spring
         this.webClient = WebClient.create("http://microservizio:8083");
     }
 
-    // TODO: aggiornare l'uri dell'endpoint a cui mandare la request
     public GenericResponse<DipendenteBean> getDipendenteBeanById(Long id) {
-        logger.info("RestService::getDipendenteBeanById started...");
+        logger.info("RestService::getDipendenteBeanById service started... sending REST to request-translator microservice");
         try {
             return webClient.get()
                     .uri("/api/dipendente/{id}", id)
