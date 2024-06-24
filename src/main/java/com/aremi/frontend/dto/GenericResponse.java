@@ -1,7 +1,6 @@
 package com.aremi.frontend.dto;
 
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -9,6 +8,6 @@ import java.util.List;
 public class GenericResponse<T> {
     private List<T> entities;
     private int entitiesNumber;
-    private HttpStatus httpCode;
+    private Integer httpCode;
     private String description;
 }
