@@ -2,12 +2,10 @@ package com.aremi.frontend.controller;
 
 import com.aremi.frontend.dto.GenericResponse;
 import com.aremi.frontend.dto.bean.DipendenteBean;
+import com.aremi.frontend.dto.bean.UtenteBean;
 import com.aremi.frontend.service.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -20,6 +18,12 @@ public final class MainController {
     @Autowired
     public MainController(RestService restService) {
         this.restService = restService;
+    }
+
+    @PostMapping("/login")
+    GenericResponse<Void> authenticate(@RequestBody UtenteBean user) {
+        logger.info("RestController::authenticate REST received from client with User: " + user);
+        return restService.authenticate(user);
     }
 
     @GetMapping("/dipendente/{id}")

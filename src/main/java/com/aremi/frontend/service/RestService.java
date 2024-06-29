@@ -2,6 +2,7 @@ package com.aremi.frontend.service;
 
 import com.aremi.frontend.dto.GenericResponse;
 import com.aremi.frontend.dto.bean.DipendenteBean;
+import com.aremi.frontend.dto.bean.UtenteBean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,22 @@ public class RestService {
                     .block();
         } catch (Exception e) {
             logger.info("RestService::getDipendentiBeanByIdSede Error...\n" + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public GenericResponse<Void> authenticate(UtenteBean user) {
+        logger.info("RestService::authenticate service started... sending REST to request-translator microservice");
+        try {
+            return webClient.post()
+                    .uri("/api/authenticate")
+                    .bodyValue(user)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<GenericResponse<Void>>() {})
+                    .block();
+        } catch (Exception e) {
+            logger.info("RestService::authenticate Error...\n" + e.getMessage());
         }
 
         return null;
