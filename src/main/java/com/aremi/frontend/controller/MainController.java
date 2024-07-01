@@ -1,6 +1,7 @@
 package com.aremi.frontend.controller;
 
 import com.aremi.frontend.dto.GenericResponse;
+import com.aremi.frontend.dto.JwtToken;
 import com.aremi.frontend.dto.bean.DipendenteBean;
 import com.aremi.frontend.dto.bean.UtenteBean;
 import com.aremi.frontend.service.RestService;
@@ -21,7 +22,7 @@ public final class MainController {
     }
 
     @PostMapping("/login")
-    GenericResponse<Void> authenticate(@RequestBody UtenteBean user) {
+    GenericResponse<JwtToken> authenticate(@RequestBody UtenteBean user) {
         logger.info("RestController::authenticate REST received from client with User: " + user);
         return restService.authenticate(user);
     }
